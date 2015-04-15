@@ -1,9 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>My NBA MVP Ballot</title>
+    <link rel="stylesheet" type="text/css" href="css/sample.css" />
 </head>
 <body>
-
+<ol class='tap-tap'>
+    <li><a href="#">Carmelo Anthony</a></li>
+    <li><a href="#">Kevin Durant</a></li>
+    <li><a href="#">Tim Duncan</a></li>
+    <li><a href="#">Marc Gasol</a></li>
+    <li><a href="#">Chris Paul</a></li>
+    <li><a href="#">Pau Gasol</a></li>
+    <li><a href="#">LeBron James</a></li>
+    <li><a href="#">Anthony Davis</a></li>
+    <li><a href="#">Stephen Curry</a></li>
+    <li><a href="#">James Harden</a></li>
+</ol>
+<script src="js/ordinal.js"></script>
+<script src="js/tap.tap.reorder.js"></script>
+<script>
+    var tapTapList = document.querySelector('.tap-tap');
+    tapTapList.addEventListener('click', smartPlacement);
+    tapTapList.addEventListener('click', function() {this.setOrdinals();});
+    tapTapList.click();
+</script>
 </body>
 </html>

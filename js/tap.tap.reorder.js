@@ -3,6 +3,9 @@
  * By tapping (100% 508 accessible so must be links or buttons)
  * if you move an element up, it places it above target
  * if you move an element down, it places it below target
+ *
+ * Added additional optional tapTapReorderInit click handles enter and tap events because...
+ * #AccessibilityMatters
  */
 Element.prototype.indexAt = function() {
 	return Array.prototype.indexOf.call(this.parentNode.children, this);
@@ -32,3 +35,6 @@ var smartPlacement = function (e) {
 	}
 };
 
+HTMLOListElement.prototype.tapTapReorderInit = function() {
+	this.addEventListener('click', smartPlacement);
+};

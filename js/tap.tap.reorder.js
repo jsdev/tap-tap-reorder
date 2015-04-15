@@ -1,16 +1,19 @@
 /**
  * Created by jsdev on 11/15/10.
+ * By tapping (100% 508 accessible so must be links or buttons)
+ * if you move an element up, it places it above target
+ * if you move an element down, it places it below target
  */
 Element.prototype.indexAt = function() {
 	return Array.prototype.indexOf.call(this.parentNode.children, this);
 }
 
-Element.prototype.moveBefore = function (referenceNode) {
+Element.prototype.moveAbove = function (referenceNode) {
 	referenceNode.parentNode.insertBefore(this, referenceNode);
 };
 
-Element.prototype.moveAfter = function (referenceNode) {
-	this.moveBefore(referenceNode.nextSibling);
+Element.prototype.moveBelow = function (referenceNode) {
+	this.moveAbove(referenceNode.nextSibling);
 };
 
 var smartPlacement = function (e) {
@@ -20,7 +23,7 @@ var smartPlacement = function (e) {
 	var selectedLi = list.attributes.selectedItem;
 	if (selectedLi) {
 		list.attributes.selectedItem = undefined;
-		selectedLi[selectedLi.indexAt() > tappedLi.indexAt() ? 'moveBefore' : 'moveAfter'](tappedLi);
+		selectedLi[selectedLi.indexAt() > tappedLi.indexAt() ? 'moveAbove' : 'moveBelow'](tappedLi);
 		selectedLi.focus();
 		selectedLi.classList.toggle('highlight');
 	} else {

@@ -21,6 +21,7 @@ Element.prototype.moveBelow = function (referenceNode) {
 
 var smartPlacement = function (e) {
 	if (e.target.tagName !== 'A') return;
+	e.preventDefault();
 	var tappedLi = e.target.parentNode;
 	var list = tappedLi.parentNode;
 	var selectedLi = list.attributes.selectedItem;
@@ -35,6 +36,33 @@ var smartPlacement = function (e) {
 	}
 };
 
+var smartPlacementRows = function (e) {
+	if (e.target.tagName !== 'A') return;
+	e.preventDefault();
+	var tappedRow = e.target.parentNode.parentNode;
+	console.log(tappedRow);
+	var table = tappedRow.parentNode;
+	var selectedRow = table.attributes.selectedItem;
+	if (selectedRow) {
+		table.attributes.selectedItem = undefined;
+		selectedRow[selectedRow.indexAt() > tappedRow.indexAt() ? 'moveAbove' : 'moveBelow'](tappedRow);
+		selectedRow.focus();
+		selectedRow.classList.toggle('highlight');
+	} else {
+		table.attributes.selectedItem = tappedRow;
+		tappedRow.classList.toggle('highlight');
+	}
+};
+
 HTMLOListElement.prototype.tapTapReorderInit = function() {
 	this.addEventListener('click', smartPlacement);
 };
+
+HTMLUListElement.prototype.tapTapReorderInit = function() {
+	this.addEventListener('click', smartPlacement);
+};
+
+HTMLTableElement.prototype.tapTapReorderInit = function() {
+	this.addEventListener('click', smartPlacementRows);
+};
+

@@ -16,14 +16,44 @@
     <li><a href="#">Anthony Davis</a></li>
     <li><a href="#">Stephen Curry</a></li>
     <li><a href="#">James Harden</a></li>
-</ol>
+</ol><ul class='tap-tap'>
+    <li><a href="#">Carmelo Anthony</a></li>
+    <li><a href="#">Kevin Durant</a></li>
+    <li><a href="#">Tim Duncan</a></li>
+    <li><a href="#">Marc Gasol</a></li>
+    <li><a href="#">Chris Paul</a></li>
+    <li><a href="#">Pau Gasol</a></li>
+    <li><a href="#">LeBron James</a></li>
+    <li><a href="#">Anthony Davis</a></li>
+    <li><a href="#">Stephen Curry</a></li>
+    <li><a href="#">James Harden</a></li>
+</ul>
+
+<table class='tap-tap'>
+    <tr><td><a href="#">Carmelo Anthony</a></td></tr>
+    <tr><td><a href="#">Kevin Durant</a></td></tr>
+    <tr><td><a href="#">Tim Duncan</a></td></tr>
+    <tr><td><a href="#">Marc Gasol</a></td></tr>
+    <tr><td><a href="#">Chris Paul</a></td></tr>
+    <tr><td><a href="#">Pau Gasol</a></td></tr>
+    <tr><td><a href="#">LeBron James</a></td></tr>
+    <tr><td><a href="#">Anthony Davis</a></td></tr>
+    <tr><td><a href="#">Stephen Curry</a></td></tr>
+    <tr><td><a href="#">James Harden</a></td></tr>
+</table>
+
 <script src="js/ordinal.js"></script>
 <script src="js/tap.tap.reorder.js"></script>
 <script>
-    var tapTapList = document.querySelector('.tap-tap');
-    tapTapList.tapTapReorderInit();
-    tapTapList.addEventListener('click', function() {this.setOrdinals();});
-    tapTapList.click();
+    var tapTapList, tapTapLists = document.querySelectorAll('.tap-tap');
+    for (var i = 0, len = tapTapLists.length; i < len; i++ )
+    {   tapTapList = tapTapLists[i];
+        tapTapList.tapTapReorderInit();
+        tapTapList.addEventListener('click', function () {
+            this.setOrdinals();
+        });
+    }
+//    tapTapList.click();
 </script>
 </body>
 </html>
